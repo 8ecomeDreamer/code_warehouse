@@ -1,13 +1,11 @@
-
-function makeClosures(arr){
-    var result = [];
-    for(var i = 0; i < arr.length; i++){
-        result[i] = function(x){
-            return x*x;
-        }
+function autoTransition(num){
+    // return tranNum = parseInt(str,2);
+    let tranNum = num.toString(2);
+    while(tranNum.length < 8){
+        tranNum = '0' + tranNum
     }
-    console.log(result)
-    return result;
+
+    return tranNum
 }
 
-makeClosures([1,2,3]);
+console.log(autoTransition(65))
