@@ -7,34 +7,34 @@
  * 01000001
  */
 
-function autoTransition(num){
-    // return tranNum = parseInt(str,2);
-    let tranNum = num.toString(2);
-    if(tranNum.length < 8){
-        const zeroNum = 8 - tranNum.length
-        let zeroStr = ''
-        for(let i = zeroNum;i>=1;--i){
-            zeroStr += '0'
-        }
-        tranNum = String(zeroStr) + String(tranNum) 
+function autoTransition(num) {
+  // return tranNum = parseInt(str,2);
+  let tranNum = num.toString(2);
+  if (tranNum.length < 8) {
+    const zeroNum = 8 - tranNum.length;
+    let zeroStr = "";
+    for (let i = zeroNum; i >= 1; --i) {
+      zeroStr += "0";
     }
+    tranNum = String(zeroStr) + String(tranNum);
+  }
 
-    return tranNum
+  return tranNum;
 }
 
-console.log(autoTransition(65))
+console.log(autoTransition(65));
 
 // 总结:
 // 写的复杂了
 
-function autoTransition(num){
-    // return tranNum = parseInt(str,2);
-    let tranNum = num.toString(2);
-    while(tranNum.length < 8){
-        tranNum = '0' + tranNum
-    }
+function autoTransition(num) {
+  // return tranNum = parseInt(str,2);
+  let tranNum = num.toString(2);
+  while (tranNum.length < 8) {
+    tranNum = "0" + tranNum;
+  }
 
-    return tranNum
+  return tranNum;
 }
 
-console.log(autoTransition(65))
+console.log(autoTransition(65));
