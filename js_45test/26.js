@@ -8,8 +8,9 @@
  */
 
 function useArguments(...arguments) {
-    return arguments.reduce((pre, cur) => pre + cur);
+  return arguments.reduce((pre, cur) => pre + cur);
 }
 
-console.log(useArguments(1,2,3,4))
+console.log(useArguments(1, 2, 3, 4));
 
+// 总结：思路 方法均想不出

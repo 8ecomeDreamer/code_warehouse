@@ -13,3 +13,12 @@
 // Hello,world
 
 // 核心思路:可以使用柯里化
+
+function functionFunction(str) {
+  return (f = function (obj) {
+    return str + ", " + obj;
+  });
+}
+console.log(functionFunction("Hello")("world"));
+
+// 总结：思路 方法均想不出

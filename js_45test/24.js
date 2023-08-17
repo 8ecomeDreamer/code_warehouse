@@ -13,15 +13,16 @@
 // 输出
 // 4
 
-function makeClosures(arr){
-    var result = [];
-    for(var i = 0; i < arr.length; i++){
-        result[i] = function(x){
-            return x*x;
-        }
-    }
-    console.log(result)
-    return result;
+function makeClosures(arr) {
+  var result = [];
+  for (var i = 0; i < arr.length; i++) {
+    result[i] = function (x) {
+      return x * x;
+    };
+  }
+  return result;
 }
 
-makeClosures([1,2,3]);
+console.log(makeClosures([1, 2, 3]));
+
+// 总结：思路 方法均想不出

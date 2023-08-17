@@ -6,19 +6,20 @@
  */
 
 // 输入
-var sayIt = function(greeting, name, punctuation){
-    return greeting + ',' + name  + (punctuation || '!');
-}
-
+var sayIt = function (greeting, name, punctuation) {
+  return greeting + "," + name + (punctuation || "!");
+};
 
 // 输出
 // partial(sayIt, 'Hello', 'Ellie')('!!!')
 // Hello,Ellie!!!
 
-function partial(fn,str1,str2){
-    return result = (str3) => {
-        return fn(str1, str2, str3)
-    }
+function partial(fn, str1, str2) {
+  return (result = (str3) => {
+    return fn(str1, str2, str3);
+  });
 }
 
-console.log(partial(sayIt, 'Hello', 'Ellie')('!!!'))
+console.log(partial(sayIt, "Hello", "Ellie")("!!!"));
+
+// 总结：思路 方法均想不出

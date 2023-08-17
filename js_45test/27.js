@@ -5,4 +5,8 @@
  * 2、fn 的调用参数为 calllt 的第一个参数之后的全部参数
  */
 
+function callIt(fn) {
+  return fn.apply(this, [].slice.call(arguments, 1));
+}
 
+// 总结：思路 方法均想不出
