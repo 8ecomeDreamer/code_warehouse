@@ -14,8 +14,10 @@ var c = function (name) {
   return this;
 };
 
-var alertobjects = function (fn, msg) {};
+var alterobjects = function (construtor, greeting) {
+  construtor.prototype.greeting = greeting;
+};
 
 var obj1 = new c("Rebecca");
-alertobjects(c, "what's up");
-obj1.greeting;
+alterobjects(c, "what's up");
+console.log(obj1.greeting);
