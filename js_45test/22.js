@@ -16,4 +16,4 @@ function fn(greeting, name, punctuation) {
 // 错误答案：
 // fn.bind(obj,obj.greeting,obj.name,obj.punctuation)
 
-console.log(fn.apply(obj));
+console.log(fn.call(obj));
