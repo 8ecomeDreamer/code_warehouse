@@ -9,7 +9,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-image: url(./images/grid.png);
+            background-image: url(../images/grid.png);
         }
 
         .box {
@@ -20,6 +20,7 @@
 
             /* 在父元素添加透视效果 */
             perspective: 800px;
+
         }
 
         .item {
@@ -31,7 +32,7 @@
             background-color: pink;
 
             /* 元素背向是否可见 */
-            backface-visibility: hidden;
+            backface-visibility: visible;
             /* 帧动画，当旋转 180° 后，item 不可见了 */
             animation: loop 6s linear infinite;
         }
