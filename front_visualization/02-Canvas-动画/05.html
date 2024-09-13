@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三角形</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url(./images/grid.png);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="triangle" width="1000" height="400px"></canvas>
+</body>
+
+<script>
+    window.onload = () => {
+        // 画直线
+        triangleCanvas()
+    }
+
+    function triangleCanvas() {
+        // 1.获取canvas元素
+        const canvasEl = document.getElementById('triangle')
+        // console.log(square); // 打印元素
+        // console.log('%O', square); // 打印元素属性等
+
+        // 获取上下文
+        if (!canvasEl.getContext('2d')) {
+            return
+        }
+        const ctx = canvasEl.getContext('2d') // 通常有2d | webgl属性,区分是画2d图形还是3d图形
+        // console.log('ctx', ctx)
+        // 描边
+        ctx.beginPath()
+        ctx.moveTo(100, 100) // x y x轴 y轴  起点
+        ctx.lineTo(150, 50) // x y  x轴 y轴   终点
+        ctx.lineTo(200, 100) // x y  x轴 y轴   起点是上一个终点
+        ctx.closePath() // 闭合路径
+        ctx.stroke() // 绘制结束时使用
+
+
+        // 实心
+        ctx.beginPath()
+        ctx.moveTo(350, 0) // x y x轴 y轴  起点
+        ctx.lineTo(400, 50) // x y  x轴 y轴   终点
+        ctx.lineTo(350, 100) // x y  x轴 y轴   终点
+        ctx.fill() // 闭合路径 绘制结束时使用 fill必须有三个点或以上
+        // ctx.stroke() // 绘制结束时使用
+    }
+</script>
+
+</html>

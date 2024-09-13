@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绘制图形</title>
+
+    <style>
+        canvas {
+            /* background: orangered; */
+            color: aqua;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url(./images/grid.png);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="square" width="1000" height="400px">正方形</canvas>
+</body>
+
+<script>
+    window.onload = () => {
+        // 正方形
+        squareCanvas()
+    }
+
+    function squareCanvas() {
+        // 1.获取canvas元素
+        const canvasEl = document.getElementById('square')
+        // console.log(square); // 打印元素
+        // console.log('%O', square); // 打印元素属性等
+
+        // 获取上下文
+        if (!canvasEl.getContext('2d')) {
+            return
+        }
+        const ctx = canvasEl.getContext('2d') // 通常有2d | webgl属性,区分是画2d图形还是3d图形
+        // console.log('ctx', ctx)
+        ctx.fillRect(100, 100, 100, 100) // x y width height x轴 y轴 宽 高 元素大小不可超出canvas区域大小
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>填充颜色</title>
+
+    <style>
+        canvas {
+            /* background: orangered; */
+            color: aqua;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 1000px;
+            height: 3000px;
+            background-image: url(./images/grid.png);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="retangle" width="1000" height="1000px"></canvas>
+</body>
+
+<script>
+    window.onload = () => {
+        // 矩形
+        retangleCanvas()
+    }
+
+    function retangleCanvas() {
+        // 1.获取canvas元素
+        const retangle = document.getElementById('retangle')
+        // console.log(square); // 打印元素
+        // console.log('%O', square); // 打印元素属性等
+
+        // 获取上下文
+        if (!retangle.getContext('2d')) {
+            return
+        }
+        const retangleCtx = retangle.getContext('2d') // 通常有2d | webgl属性,区分是画2d图形还是3d图形
+        // console.log('ctx', retangleCtx)
+        // 给所有图形设置透明度
+        retangleCtx.globalAlpha = '0.3'
+        // 绘制矩形
+        retangleCtx.fillStyle = 'red'
+        retangleCtx.fillRect(100, 200, 120, 200) // 实线
+        retangleCtx.strokeStyle = 'red'
+        retangleCtx.strokeRect(300, 100, 200, 200) // 虚线
+    }
+
+
+</script>
+
+</html>

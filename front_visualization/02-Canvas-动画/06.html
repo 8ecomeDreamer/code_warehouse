@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圆</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url(./images/grid.png);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="arc" width="1000" height="1000px"></canvas>
+</body>
+
+<script>
+    window.onload = () => {
+        // 画直线
+        arcCanvas()
+    }
+
+    function arcCanvas() {
+        // 1.获取canvas元素
+        const canvasEl = document.getElementById('arc')
+        // console.log(square); // 打印元素
+        // console.log('%O', square); // 打印元素属性等
+
+        // 获取上下文
+        if (!canvasEl.getContext('2d')) {
+            return
+        }
+        const ctx = canvasEl.getContext('2d') // 通常有2d | webgl属性,区分是画2d图形还是3d图形
+        // console.log('ctx', ctx)
+        ctx.beginPath()
+        // x轴 y轴 开始弧度(1角度 = Math.pi/180) 结束弧度 顺时针/逆时针（false/true）
+        ctx.arc(200, 200, 100, 0, Math.PI * 2, false)
+        ctx.stroke()
+        ctx.closePath()
+
+        // console.log('ctx', ctx)
+        ctx.beginPath()
+        // x轴 y轴 开始弧度(1角度 = Math.pi/180) 结束弧度 顺时针/逆时针（false/true）
+        ctx.arc(400, 400, 100, 0, Math.PI * 2, false)
+        ctx.stroke()
+        ctx.closePath()
+    }
+</script>
+
+</html>
