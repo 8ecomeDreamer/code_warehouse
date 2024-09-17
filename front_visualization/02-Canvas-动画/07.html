@@ -43,7 +43,7 @@
         // console.log('%O', square); // 打印元素属性等
 
         // 获取上下文
-        if (!retangle.getContext('2d')) {
+        if (!retangle.getContext) {
             return
         }
         const retangleCtx = retangle.getContext('2d') // 通常有2d | webgl属性,区分是画2d图形还是3d图形

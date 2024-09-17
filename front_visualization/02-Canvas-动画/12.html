@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片</title>
+
+    <style>
+        canvas {
+            /* background: orangered; */
+            color: aqua;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 1000px;
+            height: 1000px;
+            background-image: url(./images/grid.png);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <img src="./images/canvas_earth.png" style="width: 300px;height: 200px;"> -->
+    <canvas id="tutorial" width="1000" height="1000px" style="margin-bottom: 1000px;"></canvas>
+</body>
+
+<script>
+    let lineCapTime = 0
+    let lineJoinTime = 0
+    window.onload = () => {
+        // 绘制图片
+        // 1.先布置canvas区域
+        // 2.new Image对象
+        // 3.定义属性 例如src等
+        // 4.onload方法中drawImage
+        imageCanvas()
+    }
+
+    function imageCanvas() {
+        // window.alert('lineCanvas')
+        // 1.获取canvas元素
+        const canvasEl = document.getElementById('tutorial')
+        // console.log(square); // 打印元素
+        // console.log('%O', square); // 打印元素属性等
+
+        // 获取上下文
+        if (!canvasEl.getContext) {
+            return
+        }
+        const ctx = canvasEl.getContext('2d') // 通常有2d | webgl属性,区分是画2d图形还是3d图形
+
+        // 1.准备一张图片
+        const imageQ = new Image()
+        imageQ.src = './images/canvas_earth.png'
+        imageQ.onload = function () {
+            // 2.开始用Canvas来绘制图片
+            ctx.drawImage(imageQ, 100, 100, 100, 100)
+
+            // // 3.绘制折线
+            // ctx.beginPath()
+            // ctx.moveTo(40, 100)
+            // ctx.lineTo(50, 70)
+            // ctx.lineTo(60, 90)
+            // ctx.lineTo(100, 30)
+            // ctx.lineTo(170, 90)
+            // ctx.stroke()
+        }
+
+        console.log('%O', imageQ); // 打印元素属性等
+
+        // 2.开始用Canvas来绘制图片
+    }
+
+</script>
+
+</html>

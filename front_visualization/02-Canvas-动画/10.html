@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>线型</title>
+
+    <style>
+        canvas {
+            /* background: orangered; */
+            color: aqua;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 1000px;
+            height: 3000px;
+            background-image: url(./images/grid.png);
+        }
+    </style>
+</head>
+
+<body>
+    每1秒改变端点形状
+    每2秒改变连接点形状
+    <canvas id="line" width="1000" height="1000px"></canvas>
+</body>
+
+<script>
+    let lineCapTime = 0
+    let lineJoinTime = 0
+    window.onload = () => {
+        // 矩形
+        lineCanvas()
+        changeLineCap()
+        changeLineJoin()
+        setInterval(() => {
+            lineCapTime += 1
+            changeLineCap()
+            if (lineCapTime > 2) {
+                lineCapTime = 0
+            }
+        }, 1000)
+        setInterval(() => {
+            lineJoinTime += 1
+            changeLineJoin()
+            if (lineJoinTime > 2) {
+                lineJoinTime = 0
+            }
+        }, 2000)
+
+    }
+
+    function lineCanvas() {
+        // window.alert('lineCanvas')
+        // 1.获取canvas元素
+        const line = document.getElementById('line')
+        // console.log(square); // 打印元素
+        // console.log('%O', square); // 打印元素属性等
+
+        // 获取上下文
+        if (!line.getContext) {
+            return
+        }
+        const lineCtx = line.getContext('2d') // 通常有2d | webgl属性,区分是画2d图形还是3d图形
+        lineCtx.lineWidth = 2
+
+        lineCtx.beginPath()
+        lineCtx.moveTo(100, 100)
+        lineCtx.lineTo(100, 200)
+        lineCtx.stroke()
+    }
+
+    function changeLineCap() {
+        // window.alert('lineCanvas')
+        // 1.获取canvas元素
+        const line = document.getElementById('line')
+        // console.log(square); // 打印元素
+        // console.log('%O', square); // 打印元素属性等
+
+        // 获取上下文
+        if (!line.getContext) {
+            return
+        }
+        const lineCtx = line.getContext('2d') // 通常有2d | webgl属性,区分是画2d图形还是3d图形
+        const lineCapValue = lineCapTime === 0 ? 'butt' : ((lineCapTime === 1) ? 'round' : 'square')
+        lineCtx.lineWidth = 10
+        lineCtx.lineCap = lineCapValue
+
+        lineCtx.beginPath()
+        lineCtx.moveTo(200, 100)
+        lineCtx.lineTo(200, 200)
+        lineCtx.stroke()
+    }
+
+    function changeLineJoin() {
+        // window.alert('lineCanvas')
+        // 1.获取canvas元素
+        const line = document.getElementById('line')
+        // console.log(square); // 打印元素
+        // console.log('%O', square); // 打印元素属性等
+
+        // 获取上下文
+        if (!line.getContext) {
+            return
+        }
+        const lineCtx = line.getContext('2d') // 通常有2d | webgl属性,区分是画2d图形还是3d图形
+        lineCtx.lineWidth = 10
+        const lineJoinValue = lineJoinTime === 0 ? 'round' : ((lineJoinTime === 1) ? 'bevel' : 'miter')
+
+        lineCtx.beginPath()
+        lineCtx.moveTo(300, 100)
+        lineCtx.lineTo(500, 200)
+        lineCtx.lineTo(800, 100)
+        lineCtx.lineJoin = lineJoinValue
+        // lineCtx.lineJoin = 'bevel'
+        lineCtx.stroke()
+    }
+
+
+</script>
+
+</html>

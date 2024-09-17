@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字体</title>
+
+    <style>
+        canvas {
+            /* background: orangered; */
+            color: aqua;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 1000px;
+            height: 3000px;
+            background-image: url(./images/grid.png);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="font" width="1000" height="1000px" style="margin-bottom: 1000px;"></canvas>
+</body>
+
+<script>
+    let lineCapTime = 0
+    let lineJoinTime = 0
+    window.onload = () => {
+        // 字体
+        fontCanvas()
+    }
+
+    function fontCanvas() {
+        // window.alert('lineCanvas')
+        // 1.获取canvas元素
+        const font = document.getElementById('font')
+        // console.log(square); // 打印元素
+        // console.log('%O', square); // 打印元素属性等
+
+        // 获取上下文
+        if (!font.getContext) {
+            return
+        }
+        const fontCtx = font.getContext('2d') // 通常有2d | webgl属性,区分是画2d图形还是3d图形
+        fontCtx.fontWidth = 2
+
+        fontCtx.font = '60px sen-serif'
+        fontCtx.textAlign = 'center'
+        fontCtx.textBaseline = 'middle'
+        fontCtx.strokeStyle = 'red'
+        fontCtx.fillStyle = 'red'
+
+        fontCtx.fillText('测试', 100, 100)
+    }
+
+</script>
+
+</html>

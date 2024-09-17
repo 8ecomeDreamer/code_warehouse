@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>矩形</title>
+    <title>填充颜色 透明度</title>
 
     <style>
         canvas {
@@ -23,7 +23,6 @@
 </head>
 
 <body>
-    5秒之后会清空元素
     <canvas id="retangle" width="1000" height="1000px"></canvas>
 </body>
 
@@ -31,31 +30,9 @@
     window.onload = () => {
         // 矩形
         retangleCanvas()
-
-        clearCanvas()
-
     }
 
     function retangleCanvas() {
-        // 1.获取canvas元素
-        const retangle = document.getElementById('retangle')
-        // console.log(square); // 打印元素
-        // console.log('%O', square); // 打印元素属性等
-
-        // 获取上下文
-        if (!retangle.getContext('2d')) {
-            return
-        }
-        const retangleCtx = retangle.getContext('2d') // 通常有2d | webgl属性,区分是画2d图形还是3d图形
-        // console.log('ctx', retangleCtx)
-        // 清除区域
-        // retangleCtx.clearRect(0, 0, 100, 100)
-        // 绘制矩形
-        retangleCtx.fillRect(100, 100, 120, 200) // 实线
-        retangleCtx.strokeRect(300, 100, 200, 200) // 虚线
-    }
-
-    function clearCanvas() {
         // 1.获取canvas元素
         const retangle = document.getElementById('retangle')
         // console.log(square); // 打印元素
@@ -66,10 +43,17 @@
             return
         }
         const retangleCtx = retangle.getContext('2d') // 通常有2d | webgl属性,区分是画2d图形还是3d图形
-        setTimeout(() => {
-            retangleCtx.clearRect(0, 0, 1000, 1000)
-        }, 5000)
+        // console.log('ctx', retangleCtx)
+        // 给所有图形设置透明度
+        retangleCtx.globalAlpha = '0.3'
+        // 绘制矩形
+        retangleCtx.fillStyle = 'red'
+        retangleCtx.fillRect(100, 200, 120, 200) // 实线
+        retangleCtx.strokeStyle = 'red'
+        retangleCtx.strokeRect(300, 100, 200, 200) // 虚线
     }
+
+
 </script>
 
 </html>
