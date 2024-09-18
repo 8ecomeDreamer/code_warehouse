@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url(./images/grid.png);
+        }
+
+        canvas {
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="demo" width="300" height="300px">
+        你的浏览器不兼容Canvas,请升级您的浏览器!
+    </canvas>
+
+    <script>
+        window.onload = function () {
+            let demo = document.getElementById('demo')
+            if (!demo.getContext) {
+                return
+            } else {
+                const ctx = demo.getContext('2d') // 2d | webgl
+                console.log('%O', demo); // 打印元素属性等
+
+                // 平移
+                translateCanvas(ctx)
+                // 旋转
+                rotateCanvas(ctx)
+                // 缩放
+                scaleCanvas(ctx)
+            }
+        }
+
+
+        function translateCanvas(ctx) {
+            ctx.save() // (保存形变之前的状态)
+            ctx.translate(30, 30)
+            ctx.fillRect(0, 0, 50, 50)
+            ctx.restore() // 恢复了形变之前的状态( 0,0)
+
+
+            ctx.save() // (保存形变之前的状态)
+            ctx.translate(30, 30)
+            ctx.fillStyle = 'red'
+            ctx.fillRect(0, 0, 50, 30)
+            ctx.restore() // 恢复了形变之前的状态( 0,0)
+        }
+
+
+        function rotateCanvas(ctx) {
+            // 旋转30deg
+            ctx.save()
+            ctx.translate(120, 30)
+            ctx.rotate(Math.PI / 180 * 30)
+            ctx.fillRect(0, 0, 30, 30)
+            ctx.restore()
+            // 旋转30deg且变红
+            ctx.save()
+            ctx.translate(180, 30)
+            ctx.rotate(Math.PI / 180 * 30)
+            ctx.fillStyle = 'red'
+            ctx.fillRect(0, 0, 30, 30)
+            ctx.restore()
+        }
+
+
+        function scaleCanvas(ctx) {
+            // 放大两倍
+            ctx.save()
+            ctx.translate(30, 120)
+            ctx.scale(2, 2)
+            ctx.fillRect(0, 0, 30, 30)
+            ctx.restore()
+
+            // 放大x轴
+            ctx.save()
+            ctx.translate(180, 120)
+            ctx.scale(2, 1)
+            ctx.fillRect(0, 0, 30, 30)
+            ctx.restore()
+
+            // 放大y轴
+            ctx.save()
+            ctx.translate(180, 180)
+            ctx.scale(1, 2)
+            ctx.fillRect(0, 0, 30, 30)
+            ctx.restore()
+
+            // 放大三倍
+            ctx.save()
+            ctx.translate(30, 200)
+            ctx.scale(3, 3)
+            ctx.fillRect(0, 0, 30, 30)
+            ctx.restore()
+        }
+
+    </script>
+</body>
+
+</html>
