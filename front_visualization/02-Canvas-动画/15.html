@@ -1,67 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>requestAnimation 动画</title>
     <style>
-      body {
-        margin: 0;
-        padding: 0;
-        background-image: url(./images/grid.png);
-      }
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url(./images/grid.png);
+        }
 
-      canvas {
-        background-color: rgba(255, 0, 0, 0.1);
-      }
+        canvas {
+            background-color: rgba(255, 0, 0, 0.1);
+        }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <div style="margin: 10px">
-      做动画特效,尽量选择requestAnimation代替setTimeout
+        做动画特效,尽量选择requestAnimation代替setTimeout
+    </div>
+    <div style="margin: 10px">
+        动画核心公式：每秒移动得弧度（圆面积/一分钟） * 第几秒
     </div>
     <canvas style="margin: 10px" id="demo" width="300" height="300px">
-      你的浏览器不兼容Canvas,请升级您的浏览器!
+        你的浏览器不兼容Canvas,请升级您的浏览器!
     </canvas>
 
     <script>
-      window.onload = function () {
-        let canvasEl = document.getElementById("demo");
-        if (!canvasEl.getContext) {
-          return;
-        }
-        let ctx = canvasEl.getContext("2d"); // 2d | webgl
+        window.onload = function () {
+            let canvasEl = document.getElementById("demo");
+            if (!canvasEl.getContext) {
+                return;
+            }
+            let ctx = canvasEl.getContext("2d"); // 2d | webgl
 
-        requestAnimationFrame(draw);
+            requestAnimationFrame(draw);
 
-        /**
-       这个函数就是动画的一帧
-       // 现在这个函数在1秒钟会回调 61 次
-      */
-        function draw() {
-          let second = new Date().getSeconds();
-          console.log("draw");
-          ctx.clearRect(0, 0, 300, 300);
-          ctx.save();
+            /**
+           这个函数就是动画的一帧
+           // 现在这个函数在1秒钟会回调 61 次
+          */
+            function draw() {
+                let second = new Date().getSeconds();
+                console.log("draw", second);
+                ctx.clearRect(0, 0, 300, 300);
+                ctx.save();
 
-          // 1.开始绘图
-          ctx.translate(150, 150);
-          ctx.rotate(((Math.PI * 2) / 60) * second);
-          ctx.lineWidth = 6;
-          ctx.lineCap = "round";
-          ctx.strokeStyle = "red";
+                //   1.开始绘图
+                ctx.translate(150, 150);
+                ctx.rotate(((Math.PI * 2) / 60) * second);
+                ctx.lineWidth = 6;
+                ctx.lineCap = "round";
+                ctx.strokeStyle = "red";
 
-          ctx.beginPath();
-          ctx.moveTo(0, 0);
-          ctx.lineTo(0, -80);
-          ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.lineTo(0, -80);
+                ctx.stroke();
 
-          ctx.restore();
-          requestAnimationFrame(draw);
-        }
-      };
+                ctx.restore();
+                requestAnimationFrame(draw);
+            }
+        };
     </script>
-  </body>
+</body>
+
 </html>
